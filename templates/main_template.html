@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html>
+  <head>
+        <title>Canvas Chart Demo</title>
+        <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+        <script type="text/javascript">
+          google.charts.load('current', {'packages':['corechart']});
+          google.charts.setOnLoadCallback(drawChart);
+
+          function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+              ['Hour', 'Prediction', 'Truth'],
+              ['8am',{{ data['lapanpagip']}},{{ data['lapanpagia']}}],
+              ['9am',{{ data['sembilanpagip']}},{{ data['sembilanpagia']}}],
+              ['10am',{{ data['sepuluhpagip']}},{{ data['sepuluhpagia']}}],
+              ['11am',{{ data['sebelaspagip']}},{{ data['sebelaspagia']}}], 
+              ['12pm',{{ data['duabelasptgp']}},{{ data['duabelasptga']}}],
+              ['1pm',{{ data['satuptgp']}},{{ data['satuptga']}}],
+              ['2pm',{{ data['duaptgp']}},{{ data['duaptga']}}],
+              ['3pm',{{ data['tigaptgp']}},{{ data['tigaptga']}}],
+              ['4pm',{{ data['empatptgp']}},{{ data['empatptga']}}],
+              ['5pm',{{ data['limaptgp']}},{{ data['limaptga']}}],
+              ['6pm',{{ data['enamptgp']}},{{ data['enamptga']}}]
+            ]);
+
+            var options = {
+              legend: { position: 'top' }
+            };
+    
+            var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+    
+            chart.draw(data, options);
+          }
+    </script>
+    <style>
+    table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 5px; background-color:#68829E;}
+    
+    table{text-align:center; background-color:#68829E;}
+    h1{font-size:300%; background-color:#AEBD38; text-align:center;}
+    h2{text-align:center; background-color:#AEBD38;}
+    body{background-color:#505160;}
+</style>
+  </head>
+  <h1>Offered Call Prediction of {{data[title]}}</h1>
+  <center><div id="buttonstyle">
+  <button class="button" onclick="javascript:location.href='{{url_for('EFTB')}}'">EFTB</button>
+  <button class="button" onclick="javascript:location.href='{{url_for('EGTB')}}'">EGTB</button>
+  <button class="button" onclick="javascript:location.href='{{url_for('EGIB')}}'">EGIB</button>
+  <button class="button" onclick="javascript:location.href='{{url_for('ELIB')}}'">ELIB</button>
+  <button class="button" onclick="javascript:location.href='{{url_for('ELBB')}}'">ELBB</button>
+  <button class="button" onclick="javascript:location.href='{{url_for('EGBB')}}'">EGBB</button>
+  <button class="button" onclick="javascript:location.href='{{url_for('combineall')}}'">ALL</button>
+<!--  <button class="button" onclick="javascript:location.href='{{url_for('simulation')}}'">Simulation number of headcount</button> -->
+  </div><center>
+  <body style="margin-left:50px;margin-top:50px;">
+        <div id="curve_chart" style="width: 900px; margin: 0px auto; height: 500px"></div>
+  <h2>Estimation of Abandon Percentage Based on Number Of Agent</h2>
+  
+  
+  <p>*Headcount required based on skill</p>
+  <table style="margin: 0px auto;">
+      <tbody>
+          <tr>
+              <th> Number of Agent</th>
+              <th> 8 AM</th>
+              <th> 9 AM</th>
+              <th> 10 AM</th>
+              <th> 11 AM</th>
+              <th> 12 PM</th>
+              <th> 1 PM</th>
+              <th> 2 PM</th>
+              <th> 3 PM</th>
+              <th> 4 PM</th>
+              <th> 5 PM</th>
+              <th> 6 PM</th>
+          </tr>
+          <tr>
+              <th>1</th>
+              {% for item in data['one'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>2</th>
+              {% for item in data['two'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>3</th>
+              {% for item in data['three'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>4</th>
+              {% for item in data['four'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>5</th>
+               {% for item in data['five'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>6</th>
+               {% for item in data['six'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>7</th>
+               {% for item in data['seven'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>8</th>
+               {% for item in data['eight'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>9</th>
+               {% for item in data['nine'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>10</th>
+               {% for item in data['ten'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>11</th>
+               {% for item in data['eleven'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>12</th>
+               {% for item in data['twelve'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>13</th>
+               {% for item in data['thirteen'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>14</th>
+               {% for item in data['fourteen'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>15</th>
+               {% for item in data['fifthteen'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>16</th>
+               {% for item in data['sixteen'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>17</th>
+               {% for item in data['seventeen'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>18</th>
+               {% for item in data['eighteen'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>19</th>
+               {% for item in data['nineteen'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>20</th>
+               {% for item in data['twenty'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>21</th>
+               {% for item in data['twentyone'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>22</th>
+               {% for item in data['twentytwo'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>23</th>
+               {% for item in data['twentythree'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>24</th>
+               {% for item in data['twentyfour'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+      </tbody>
+  </table>
+
+<!--
+     <p>*Headcount required on overall</p>
+  <table style="margin: 0px auto;">
+      <tbody>
+          <tr>
+              <th> Number of Agent</th>
+              <th> 8 AM</th>
+              <th> 9 AM</th>
+              <th> 10 AM</th>
+              <th> 11 AM</th>
+              <th> 12 PM</th>
+              <th> 1 PM</th>
+              <th> 2 PM</th>
+              <th> 3 PM</th>
+              <th> 4 PM</th>
+              <th> 5 PM</th>
+              <th> 6 PM</th>
+          </tr>
+          <tr>
+              <th>1</th>
+              {% for item in data['one'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>2</th>
+              {% for item in data['two'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>3</th>
+              {% for item in data['three'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>4</th>
+              {% for item in data['four'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>5</th>
+               {% for item in data['five'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>6</th>
+               {% for item in data['six'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>7</th>
+               {% for item in data['seven'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>8</th>
+               {% for item in data['eight'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>9</th>
+               {% for item in data['nine'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>10</th>
+               {% for item in data['ten'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>11</th>
+               {% for item in data['eleven'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>12</th>
+               {% for item in data['twelve'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>13</th>
+               {% for item in data['thirteen'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>14</th>
+               {% for item in data['fourteen'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>15</th>
+               {% for item in data['fifthteen'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>16</th>
+               {% for item in data['sixteen'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>17</th>
+               {% for item in data['seventeen'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>18</th>
+               {% for item in data['eighteen'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>19</th>
+               {% for item in data['nineteen'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>20</th>
+               {% for item in data['twenty'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>21</th>
+               {% for item in data['twentyone'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>22</th>
+               {% for item in data['twentytwo'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>23</th>
+               {% for item in data['twentythree'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+          <tr>
+              <th>24</th>
+               {% for item in data['twentyfour'] %}
+              <th>{{item}}</th>
+              {% endfor %}
+          </tr>
+      </tbody>
+  </table>
+ --> 
+  </body>
+
+
+</html>
+
+
