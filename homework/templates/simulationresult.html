@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+      <style>
+       table, th, td {
+       border: 1px solid black;
+       border-collapse: collapse;
+       padding: 5px; background-color:#68829E;}
+      
+      h1{font-size:300%; background-color:#AEBD38; text-align:center;}
+      body{background-color:#505160;}
+      table{text-align:center; background-color:#68829E;}
+      </style>
+  </head>
+  <body>
+  
+   <table style="margin: 0px auto;">
+		<tbody>
+		<tr>
+			<th>Number of Agent</th>
+			<th>Percentage abandon rate</th>
+		</tr>
+		{% for key, value in data.items() %}
+		<tr>
+			<th>{{ key }}</th>
+			<th>{{ data[key] }}</th>
+		</tr>
+		{% endfor %}
+		</tbody>
+	</table><br>
+	<center><div id="buttonstyle">
+  <button class="button" onclick="javascript:location.href='{{url_for('EFTB')}}'">Home</button>
+  <button class="button" onclick="javascript:location.href='{{url_for('simulation')}}'">Simulate again</button>
+  </div></center><br><br>
+  </body>
